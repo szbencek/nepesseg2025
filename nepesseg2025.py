@@ -55,7 +55,7 @@ def megye_adatok():
             telepulesek_szama += 1
             lakosok_szama += n["ferfi"] + n["no"]
 
-            if n["tipus"].lower() == "város" or n["tipus"].lower() == "vármegyei jogú város" or n["tipus"].lower() == "vármegye székhely":
+            if n["tipus"].lower() == "város" or n["tipus"].lower() == "vármegyei jogú város" or n["tipus"].lower() == "vármegye székhely" or n["tipus"].lower() == "fővárosi kerület":
                 varosok_lakoinak_szama += n["ferfi"] + n["no"]
 
     print(f"Települések száma: {telepulesek_szama}")
@@ -67,7 +67,7 @@ def telepules_tipus():
     print("Válasszon településtípust!")
     telepules_tipus = telepules_tipus_menupontok()
 
-    terminal_height = os.get_terminal_size().lines
+    terminal_height = os.get_terminal_size().lines - 2
 
     telepules_adatok = []
 
@@ -75,10 +75,17 @@ def telepules_tipus():
             if n["tipus"].lower() == telepules_tipus.lower():
                 telepules_adatok.append(f"{n['telepules']} - {n['ferfi'] + n['no']} fő")
 
-    for i in range(terminal_height - 1):
-        if i < len(telepules_adatok):
-            print(telepules_adatok[i])
-        else:
+    for i in range(0, len(telepules_adatok), terminal_height):
+        aktualis_oldal = telepules_adatok[i:i + terminal_height]
+
+        for elem in aktualis_oldal:
+            print(elem)
+
+        if i + terminal_height >= len(telepules_adatok):
+            break
+
+        lapozas = input("Lapozz! (ENTER) ")
+        if lapozas != "":
             break
 
 
