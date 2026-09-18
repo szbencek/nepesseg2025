@@ -15,9 +15,7 @@ with open("lakossag_2025.csv", "r", encoding="UTF-8") as forrasfajl:
             "no": int(adatok[4].replace(" ", ""))
         }
         nepesseg_adatok.append(nepesseg_adat)
-
-for n in nepesseg_adatok:
-    print(n)
+        
 
 def menupont_valaszto(menupont):
     match menupont:
