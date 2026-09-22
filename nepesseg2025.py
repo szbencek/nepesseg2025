@@ -17,7 +17,7 @@ with open("lakossag_2025.csv", "r", encoding="UTF-8") as forrasfajl:
         }
 
         nepesseg_adatok.append(nepesseg_adat)
-
+        
 
 def menupont_valaszto(menupont):
     match menupont:
